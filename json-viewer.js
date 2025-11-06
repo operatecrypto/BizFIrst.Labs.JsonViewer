@@ -139,7 +139,7 @@ class JsonViewer {
         const toggle = document.createElement('span');
         toggle.className = 'json-toggle';
         toggle.textContent = '▼';
-        toggle.onclick = function() {
+        toggle.onclick = function () {
             const parent = this.parentElement;
             const children = parent.querySelector('.json-tree-children');
             if (children) {
@@ -360,7 +360,7 @@ class JsonViewer {
      * Get badge color for difference type
      */
     getDiffBadgeColor(type) {
-        switch(type) {
+        switch (type) {
             case 'added': return 'success';
             case 'removed': return 'danger';
             case 'modified': return 'warning';

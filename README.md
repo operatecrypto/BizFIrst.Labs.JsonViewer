@@ -8,6 +8,7 @@ A lightweight JSON viewer built with vanilla JavaScript and Bootstrap that provi
 - **Beautify**: Format and minify JSON with syntax highlighting
 - **Compare**: Compare two JSON objects and highlight differences
 - **Facade Interface**: Simple API for programmatic interaction
+- **Service Class**: High-level service methods with titles and descriptions
 
 ## Getting Started
 
@@ -17,11 +18,15 @@ Simply open `index.html` in your web browser. No build process or dependencies r
 
 ```
 .
-├── index.html          # Main HTML page with root div "json-viewer-holder"
-├── json-viewer.js      # Facade interface and core functionality
-├── app.js              # Application initialization
-├── styles.css          # Custom styles
-└── README.md           # This file
+├── index.html                # Main HTML page with root div "json-viewer-holder"
+├── json-viewer.js            # Facade interface and core functionality
+├── json-viewer-service.js    # Service class with high-level methods
+├── app.js                    # Application initialization
+├── styles.css                # Custom styles
+├── demo.html                 # Facade demo examples
+├── service-demo.html         # Service class demo examples
+├── README.md                 # This file
+└── SERVICE-USAGE.md          # Detailed service class documentation
 ```
 
 ## Usage
@@ -64,6 +69,46 @@ jsonViewer.loadTreeView();
 jsonViewer.beautifyJson();
 jsonViewer.compareJson();
 ```
+
+### Service Class API
+
+The `JsonViewerService` provides high-level methods with built-in title and description support:
+
+```javascript
+// Render JSON as tree view
+jsonViewerService.renderJsonData(
+    "User Profile",
+    "Displaying user information",
+    {name: "John", age: 30}
+);
+
+// Beautify JSON
+jsonViewerService.beautifyAndRender(
+    "Formatted Output",
+    "JSON with proper indentation",
+    '{"compact":"json"}'
+);
+
+// Compare two JSONs
+jsonViewerService.compareAndRender(
+    "Version Comparison",
+    "Showing differences between versions",
+    {version: "1.0"},
+    {version: "2.0", new: true}
+);
+
+// Convert text to JSON and render
+jsonViewerService.renderTextData(
+    "From Text",
+    "Parsing JSON from text data",
+    '{"text":"data"}'
+);
+
+// Set custom container
+jsonViewerService.setContainer('#my-container');
+```
+
+For complete service documentation, see [SERVICE-USAGE.md](SERVICE-USAGE.md).
 
 ## Keyboard Shortcuts
 

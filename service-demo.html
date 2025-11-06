@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON Viewer Service - Demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container-fluid">
+            <span class="navbar-brand mb-0 h1">JSON Viewer Service - Demo</span>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <div class="alert alert-info">
+            <h5>JsonViewerService Demo</h5>
+            <p>This page demonstrates the JsonViewerService class methods with titles and descriptions.</p>
+            <div class="btn-group" role="group">
+                <button class="btn btn-sm btn-primary" onclick="testRenderJsonData()">renderJsonData()</button>
+                <button class="btn btn-sm btn-success" onclick="testBeautifyAndRender()">beautifyAndRender()</button>
+                <button class="btn btn-sm btn-warning" onclick="testCompareAndRender()">compareAndRender()</button>
+                <button class="btn btn-sm btn-info" onclick="testRenderTextData()">renderTextData()</button>
+                <button class="btn btn-sm btn-secondary" onclick="testRenderMultiple()">renderMultiple()</button>
+            </div>
+        </div>
+
+        <!-- Main container for rendering -->
+        <div class="json-viewer-holder" id="main-viewer" style="min-height: 400px;">
+            <p class="text-muted">Click a demo button above to see the JsonViewerService in action.</p>
+        </div>
+
+        <!-- Example code section -->
+        <div class="mt-4">
+            <h5>Example Code</h5>
+            <pre id="example-code" class="json-preview"></pre>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="json-viewer.js"></script>
+    <script src="json-viewer-service.js"></script>
+    <script>
+        // Initialize the service with our container
+        jsonViewerService.setContainer('#main-viewer');
+
+        function updateExampleCode(code) {
+            document.getElementById('example-code').textContent = code;
+        }
+
+        // Test renderJsonData()
+        function testRenderJsonData() {
+            const sampleData = {
+                user: {
+                    id: 12345,
+                    name: "John Doe",
+                    email: "john.doe@example.com",
+                    role: "admin",
+                    active: true
+                },
+                permissions: ["read", "write", "delete"],
+                lastLogin: "2024-01-15T10:30:00Z",
+                settings: {
+                    theme: "dark",
+                    notifications: true,
+                    language: "en"
+                }
+            };
+
+            jsonViewerService.renderJsonData(
+                "User Profile Data",
+                "Displaying user information in a tree view format with expandable/collapsible nodes",
+                sampleData
+            );
+
+            updateExampleCode(`// renderJsonData() example
+const sampleData = {
+    user: {
+        id: 12345,
+        name: "John Doe",
+        email: "john.doe@example.com",
+        role: "admin",
+        active: true
+    },
+    permissions: ["read", "write", "delete"],
+    lastLogin: "2024-01-15T10:30:00Z",
+    settings: {
+        theme: "dark",
+        notifications: true,
+        language: "en"
+    }
+};
+
+jsonViewerService.renderJsonData(
+    "User Profile Data",
+    "Displaying user information in a tree view format",
+    sampleData
+);`);
+        }
+
+        // Test beautifyAndRender()
+        function testBeautifyAndRender() {
+            const uglyJson = '{"product":{"id":789,"name":"Laptop","price":1299.99,"specs":{"cpu":"Intel i7","ram":"16GB","storage":"512GB SSD"},"inStock":true,"tags":["electronics","computers","sale"]}}';
+
+            jsonViewerService.beautifyAndRender(
+                "Product Information - Beautified",
+                "Original JSON was minified. Below is the beautified version with proper indentation.",
+                uglyJson
+            );
+
+            updateExampleCode(`// beautifyAndRender() example
+const uglyJson = '{"product":{"id":789,"name":"Laptop",...}}';
+
+jsonViewerService.beautifyAndRender(
+    "Product Information - Beautified",
+    "Original JSON was minified. Below is the beautified version.",
+    uglyJson
+);`);
+        }
+
+        // Test compareAndRender()
+        function testCompareAndRender() {
+            const beforeData = {
+                product: "Widget",
+                price: 19.99,
+                quantity: 100,
+                categories: ["tools", "hardware"],
+                available: true,
+                description: "A useful widget"
+            };
+
+            const afterData = {
+                product: "Widget",
+                price: 24.99,
+                quantity: 75,
+                categories: ["tools", "hardware", "featured"],
+                available: true,
+                discount: 10,
+                rating: 4.5
+            };
+
+            jsonViewerService.compareAndRender(
+                "Product Update Comparison",
+                "Comparing the product data before and after the update. Shows added, removed, and modified fields.",
+                beforeData,
+                afterData
+            );
+
+            updateExampleCode(`// compareAndRender() example
+const beforeData = {
+    product: "Widget",
+    price: 19.99,
+    quantity: 100,
+    categories: ["tools", "hardware"],
+    available: true,
+    description: "A useful widget"
+};
+
+const afterData = {
+    product: "Widget",
+    price: 24.99,  // Modified
+    quantity: 75,  // Modified
+    categories: ["tools", "hardware", "featured"],  // Modified
+    available: true,
+    discount: 10,  // Added
+    rating: 4.5    // Added
+    // description removed
+};
+
+jsonViewerService.compareAndRender(
+    "Product Update Comparison",
+    "Comparing the product data before and after the update.",
+    beforeData,
+    afterData
+);`);
+        }
+
+        // Test renderTextData()
+        function testRenderTextData() {
+            const textData = `{
+    "order": {
+        "id": "ORD-2024-001",
+        "customer": "Jane Smith",
+        "items": [
+            {"name": "Book", "qty": 2, "price": 15.99},
+            {"name": "Pen", "qty": 5, "price": 2.50}
+        ],
+        "total": 44.48,
+        "status": "shipped"
+    }
+}`;
+
+            jsonViewerService.renderTextData(
+                "Order Details from Text",
+                "Converting text data to JSON and rendering as tree view. Useful for parsing JSON from logs or text files.",
+                textData
+            );
+
+            updateExampleCode(`// renderTextData() example
+const textData = \`{
+    "order": {
+        "id": "ORD-2024-001",
+        "customer": "Jane Smith",
+        "items": [
+            {"name": "Book", "qty": 2, "price": 15.99},
+            {"name": "Pen", "qty": 5, "price": 2.50}
+        ],
+        "total": 44.48,
+        "status": "shipped"
+    }
+}\`;
+
+jsonViewerService.renderTextData(
+    "Order Details from Text",
+    "Converting text data to JSON and rendering as tree view.",
+    textData
+);`);
+        }
+
+        // Test renderMultiple() - Bonus method
+        function testRenderMultiple() {
+            const datasets = [
+                {
+                    title: "User Data",
+                    description: "User profile information",
+                    data: {
+                        name: "Alice",
+                        age: 28,
+                        email: "alice@example.com"
+                    },
+                    type: "tree"
+                },
+                {
+                    title: "Settings",
+                    description: "Application settings",
+                    data: {
+                        theme: "light",
+                        language: "en",
+                        notifications: true
+                    },
+                    type: "beautify"
+                },
+                {
+                    title: "Config Comparison",
+                    description: "Before vs After config",
+                    data1: { version: "1.0", debug: false },
+                    data2: { version: "2.0", debug: true, env: "prod" },
+                    type: "compare"
+                }
+            ];
+
+            jsonViewerService.renderMultiple(datasets);
+
+            updateExampleCode(`// renderMultiple() example - BONUS METHOD!
+const datasets = [
+    {
+        title: "User Data",
+        description: "User profile information",
+        data: {name: "Alice", age: 28, email: "alice@example.com"},
+        type: "tree"
+    },
+    {
+        title: "Settings",
+        description: "Application settings",
+        data: {theme: "light", language: "en", notifications: true},
+        type: "beautify"
+    },
+    {
+        title: "Config Comparison",
+        description: "Before vs After config",
+        data1: {version: "1.0", debug: false},
+        data2: {version: "2.0", debug: true, env: "prod"},
+        type: "compare"
+    }
+];
+
+jsonViewerService.renderMultiple(datasets);`);
+        }
+
+        // Auto-load first demo
+        window.addEventListener('DOMContentLoaded', function () {
+            console.log('JsonViewerService Demo loaded');
+            console.log('Available methods:', Object.getOwnPropertyNames(Object.getPrototypeOf(jsonViewerService)));
+
+            // Show a welcome message
+            testRenderJsonData();
+        });
+    </script>
+</body>
+
+</html>
