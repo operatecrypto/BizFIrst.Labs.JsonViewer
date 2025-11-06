@@ -1,0 +1,6 @@
+I want to create a json viewer html and vanila javascript based project.
+use bootstrap
+
+1. An html page should have root div with class name "json-viewer-holder" class
+2. I need a facade interface to interact and send json data, change view etc.
+3. On the UI, I need json tree, json beatify json comapre etc
