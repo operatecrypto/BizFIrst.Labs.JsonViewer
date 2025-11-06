@@ -2,13 +2,14 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f8f9fa;
+    background-color: #1a1a1a;
+    color: #e0e0e0;
 }
 
 /* JSON Viewer Holder */
 .json-viewer-holder {
-    background-color: #ffffff;
-    border: 1px solid #dee2e6;
+    background-color: #2d2d2d;
+    border: 1px solid #404040;
     border-radius: 4px;
     padding: 15px;
     min-height: 200px;
@@ -16,6 +17,7 @@ body {
     overflow: auto;
     font-family: 'Courier New', monospace;
     font-size: 14px;
+    color: #e0e0e0;
 }
 
 /* Tree View Styles */
@@ -41,45 +43,45 @@ body {
     user-select: none;
     display: inline-block;
     width: 20px;
-    color: #6c757d;
+    color: #999999;
     font-size: 12px;
 }
 
 .json-toggle:hover {
-    color: #007bff;
+    color: #4d9fff;
 }
 
 .json-key {
-    color: #8b4513;
+    color: #d4a259;
     font-weight: 600;
 }
 
 .json-type {
-    color: #6c757d;
+    color: #999999;
     font-style: italic;
     margin-left: 5px;
 }
 
 .json-string {
-    color: #28a745;
+    color: #6adb8a;
 }
 
 .json-number {
-    color: #007bff;
+    color: #4d9fff;
 }
 
 .json-boolean {
-    color: #dc3545;
+    color: #ff6b6b;
     font-weight: bold;
 }
 
 .json-null {
-    color: #6c757d;
+    color: #999999;
     font-style: italic;
 }
 
 .json-value {
-    color: #333;
+    color: #e0e0e0;
 }
 
 .json-tree-children {
@@ -92,30 +94,33 @@ body {
 
 /* Beautify Output */
 #beautify-output {
-    background-color: #f8f9fa;
+    background-color: #2d2d2d;
     padding: 15px;
     border-radius: 4px;
-    border: 1px solid #dee2e6;
+    border: 1px solid #404040;
     max-height: 500px;
     overflow: auto;
     font-family: 'Courier New', monospace;
     font-size: 13px;
-    color: #333;
+    color: #e0e0e0;
     white-space: pre-wrap;
     word-wrap: break-word;
 }
 
 /* Comparison Styles */
 .diff-added {
-    background-color: #d4edda !important;
+    background-color: #1e4620 !important;
+    color: #6adb8a !important;
 }
 
 .diff-removed {
-    background-color: #f8d7da !important;
+    background-color: #4a1f1f !important;
+    color: #ff6b6b !important;
 }
 
 .diff-modified {
-    background-color: #fff3cd !important;
+    background-color: #4a3f1f !important;
+    color: #ffd966 !important;
 }
 
 /* Textarea Styles */
@@ -123,13 +128,23 @@ textarea.form-control {
     font-family: 'Courier New', monospace;
     font-size: 13px;
     resize: vertical;
+    background-color: #2d2d2d;
+    color: #e0e0e0;
+    border: 1px solid #404040;
+}
+
+textarea.form-control:focus {
+    background-color: #2d2d2d;
+    color: #e0e0e0;
+    border-color: #4d9fff;
+    box-shadow: 0 0 0 0.2rem rgba(77, 159, 255, 0.25);
 }
 
 /* Tab Content */
 .tab-content {
-    background-color: #ffffff;
+    background-color: #242424;
     padding: 20px;
-    border: 1px solid #dee2e6;
+    border: 1px solid #404040;
     border-top: none;
     border-radius: 0 0 4px 4px;
 }
@@ -141,17 +156,17 @@ textarea.form-control {
 }
 
 .json-viewer-holder::-webkit-scrollbar-track {
-    background: #f1f1f1;
+    background: #1a1a1a;
     border-radius: 4px;
 }
 
 .json-viewer-holder::-webkit-scrollbar-thumb {
-    background: #888;
+    background: #555555;
     border-radius: 4px;
 }
 
 .json-viewer-holder::-webkit-scrollbar-thumb:hover {
-    background: #555;
+    background: #777777;
 }
 
 /* Responsive */
@@ -174,13 +189,7 @@ textarea.form-control {
 #compare-holder table {
     margin-top: 15px;
     font-size: 14px;
-}
-
-#compare-holder code {
-    background-color: #f8f9fa;
-    padding: 2px 6px;
-    border-radius: 3px;
-    font-size: 13px;
+    color: #e0e0e0;
 }
 
 /* Button Group */
@@ -195,50 +204,59 @@ textarea.form-control {
 }
 
 .nav-tabs {
-    background-color: #f8f9fa;
-    border-bottom: 2px solid #dee2e6;
+    background-color: #1a1a1a;
+    border-bottom: 2px solid #404040;
 }
 
 .nav-tabs .nav-link {
-    color: #495057;
+    color: #999999;
     font-weight: 500;
+    background-color: transparent;
+    border: none;
+}
+
+.nav-tabs .nav-link:hover {
+    color: #e0e0e0;
+    border-color: transparent;
 }
 
 .nav-tabs .nav-link.active {
-    color: #007bff;
+    color: #4d9fff;
     font-weight: 600;
+    background-color: #242424;
+    border-color: #404040 #404040 transparent;
 }
 
 /* JSON Viewer Service Styles */
 .json-viewer-header {
-    border-bottom: 2px solid #dee2e6;
+    border-bottom: 2px solid #404040;
     padding-bottom: 10px;
     margin-bottom: 15px;
 }
 
 .json-viewer-title {
-    color: #333;
+    color: #e0e0e0;
     font-size: 1.5rem;
     font-weight: 600;
     margin-bottom: 5px;
 }
 
 .json-viewer-description {
-    color: #6c757d;
+    color: #999999;
     font-size: 0.95rem;
     margin-bottom: 0;
 }
 
 .json-beautified {
-    background-color: #f8f9fa;
+    background-color: #2d2d2d;
     padding: 15px;
     border-radius: 4px;
-    border: 1px solid #dee2e6;
+    border: 1px solid #404040;
     max-height: 500px;
     overflow: auto;
     font-family: 'Courier New', monospace;
     font-size: 13px;
-    color: #333;
+    color: #e0e0e0;
     white-space: pre-wrap;
     word-wrap: break-word;
 }
@@ -248,32 +266,32 @@ textarea.form-control {
 }
 
 .json-tree-container {
-    border: 1px solid #dee2e6;
+    border: 1px solid #404040;
     border-radius: 4px;
     padding: 15px;
-    background-color: #fff;
+    background-color: #2d2d2d;
 }
 
 .json-preview {
-    background-color: #f8f9fa;
+    background-color: #2d2d2d;
     padding: 15px;
     border-radius: 4px;
-    border: 1px solid #dee2e6;
+    border: 1px solid #404040;
     max-height: 400px;
     overflow: auto;
     font-family: 'Courier New', monospace;
     font-size: 13px;
-    color: #333;
+    color: #e0e0e0;
 }
 
 .differences-section {
     margin-top: 20px;
     padding-top: 20px;
-    border-top: 2px solid #dee2e6;
+    border-top: 2px solid #404040;
 }
 
 .differences-section h6 {
-    color: #333;
+    color: #e0e0e0;
     font-weight: 600;
     margin-bottom: 15px;
 }
@@ -283,9 +301,28 @@ textarea.form-control {
 }
 
 .text-data-container pre {
-    background-color: #fff;
+    background-color: #2d2d2d;
     padding: 10px;
     border-radius: 4px;
     max-height: 300px;
     overflow: auto;
+    color: #e0e0e0;
+}
+
+/* Headings */
+h5, h6 {
+    color: #e0e0e0;
+}
+
+/* Table Overrides */
+#compare-holder table {
+    color: #e0e0e0;
+}
+
+#compare-holder code {
+    background-color: #2d2d2d;
+    color: #6adb8a;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 13px;
 }
